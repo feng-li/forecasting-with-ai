@@ -7415,7 +7415,6 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
-                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7520,7 +7519,7 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="s1">'chronos-forecasting&gt;=2.0'</span> <span class="s1">'pandas[pyarrow]'</span> <span class="s1">'matplotlib'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="s2">"chronos-forecasting&gt;=2.0"</span> <span class="s2">"pandas[pyarrow]"</span> <span class="s2">"matplotlib"</span>
 </pre></div>
 </div>
 </div>
@@ -7533,74 +7532,71 @@ main {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
-Requirement already satisfied: chronos-forecasting&gt;=2.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (2.0.1)
-Requirement already satisfied: matplotlib in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (3.10.7)
-Requirement already satisfied: pandas[pyarrow] in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (2.3.3)
-Requirement already satisfied: accelerate&lt;2,&gt;=0.34 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.11.0)
-Requirement already satisfied: boto3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.40.68)
-Requirement already satisfied: einops&lt;1,&gt;=0.7.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (0.8.1)
-Requirement already satisfied: numpy&lt;3,&gt;=1.21 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (2.3.4)
-Requirement already satisfied: scikit-learn&lt;2,&gt;=1.6.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.7.2)
-Requirement already satisfied: torch&lt;3,&gt;=2.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (2.9.0)
-Requirement already satisfied: transformers&lt;5,&gt;=4.41 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (4.57.1)
-Requirement already satisfied: packaging&gt;=20.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (25.0)
-Requirement already satisfied: psutil in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (7.1.3)
-Requirement already satisfied: pyyaml in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (6.0.3)
-Requirement already satisfied: huggingface_hub&gt;=0.21.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (0.36.0)
-Requirement already satisfied: safetensors&gt;=0.4.3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (0.6.2)
-Requirement already satisfied: scipy&gt;=1.8.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (1.16.3)
-Requirement already satisfied: joblib&gt;=1.2.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (1.5.2)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (3.6.0)
-Requirement already satisfied: filelock in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.20.0)
-Requirement already satisfied: typing-extensions&gt;=4.10.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (4.15.0)
-Requirement already satisfied: setuptools in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (80.9.0)
-Requirement already satisfied: sympy&gt;=1.13.3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.14.0)
-Requirement already satisfied: networkx&gt;=2.5.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.5)
-Requirement already satisfied: jinja2 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.1.6)
-Requirement already satisfied: fsspec&gt;=0.8.5 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (2025.10.0)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.93)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.90)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.90)
-Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (9.10.2.21)
-Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.4.1)
-Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (11.3.3.83)
-Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (10.3.9.90)
-Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (11.7.3.90)
-Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.5.8.93)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (0.7.1)
-Requirement already satisfied: nvidia-nccl-cu12==2.27.5 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (2.27.5)
-Requirement already satisfied: nvidia-nvshmem-cu12==3.3.20 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.3.20)
-Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.90)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.8.93)
-Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.13.1.3)
-Requirement already satisfied: triton==3.5.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.5.0)
-Requirement already satisfied: regex!=2019.12.17 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (2025.11.3)
-Requirement already satisfied: requests in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (2.32.5)
-Requirement already satisfied: tokenizers&lt;=0.23.0,&gt;=0.22.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (0.22.1)
-Requirement already satisfied: tqdm&gt;=4.27 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (4.67.1)
-Requirement already satisfied: hf-xet&lt;2.0.0,&gt;=1.1.3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from huggingface_hub&gt;=0.21.0-&gt;accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (1.2.0)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from pandas[pyarrow]) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from pandas[pyarrow]) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from pandas[pyarrow]) (2025.2)
-Requirement already satisfied: pyarrow&gt;=10.0.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from pandas[pyarrow]) (22.0.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (4.60.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: pillow&gt;=8 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (12.0.0)
-Requirement already satisfied: pyparsing&gt;=3 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from matplotlib) (3.2.5)
-Requirement already satisfied: six&gt;=1.5 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas[pyarrow]) (1.17.0)
-Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from sympy&gt;=1.13.3-&gt;torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.3.0)
-Requirement already satisfied: botocore&lt;1.41.0,&gt;=1.40.68 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (1.40.68)
-Requirement already satisfied: jmespath&lt;2.0.0,&gt;=0.7.1 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (1.0.1)
-Requirement already satisfied: s3transfer&lt;0.15.0,&gt;=0.14.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (0.14.0)
-Requirement already satisfied: urllib3!=2.2.0,&lt;3,&gt;=1.25.4 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from botocore&lt;1.41.0,&gt;=1.40.68-&gt;boto3-&gt;chronos-forecasting&gt;=2.0) (2.5.0)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from jinja2-&gt;torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.0.3)
-Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from requests-&gt;transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (3.4.4)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from requests-&gt;transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (3.11)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages (from requests-&gt;transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (2025.10.5)
-Note: you may need to restart the kernel to use updated packages.
+<pre>Defaulting to user installation because normal site-packages is not writeable
+<span class="ansi-yellow-fg">WARNING: Skipping /usr/lib/python3.12/dist-packages/charset_normalizer-3.3.2.dist-info due to invalid metadata entry 'name'</span><span class="ansi-yellow-fg">
+</span>Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: chronos-forecasting&gt;=2.0 in /home/fli/.local/lib/python3.12/site-packages (2.0.1)
+Requirement already satisfied: matplotlib in /home/fli/.local/lib/python3.12/site-packages (3.10.7)
+Requirement already satisfied: pandas[pyarrow] in /home/fli/.local/lib/python3.12/site-packages (2.3.3)
+Requirement already satisfied: accelerate&lt;2,&gt;=0.34 in /home/fli/.local/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.11.0)
+Requirement already satisfied: boto3 in /home/fli/.local/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.40.64)
+Requirement already satisfied: einops&lt;1,&gt;=0.7.0 in /home/fli/.local/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (0.8.1)
+Requirement already satisfied: numpy&lt;3,&gt;=1.21 in /usr/lib/python3/dist-packages (from chronos-forecasting&gt;=2.0) (1.26.4)
+Requirement already satisfied: scikit-learn&lt;2,&gt;=1.6.0 in /home/fli/.local/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (1.7.1)
+Requirement already satisfied: torch&lt;3,&gt;=2.0 in /usr/local/lib/python3.12/dist-packages (from chronos-forecasting&gt;=2.0) (2.7.0)
+Requirement already satisfied: transformers&lt;5,&gt;=4.41 in /home/fli/.local/lib/python3.12/site-packages (from chronos-forecasting&gt;=2.0) (4.57.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/lib/python3/dist-packages (from pandas[pyarrow]) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/lib/python3/dist-packages (from pandas[pyarrow]) (2024.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/fli/.local/lib/python3.12/site-packages (from pandas[pyarrow]) (2025.2)
+Requirement already satisfied: pyarrow&gt;=10.0.1 in /home/fli/.local/lib/python3.12/site-packages (from pandas[pyarrow]) (22.0.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/lib/python3/dist-packages (from matplotlib) (1.0.7)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/lib/python3/dist-packages (from matplotlib) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/lib/python3/dist-packages (from matplotlib) (4.46.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/fli/.local/lib/python3.12/site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/lib/python3/dist-packages (from matplotlib) (24.0)
+Requirement already satisfied: pillow&gt;=8 in /usr/lib/python3/dist-packages (from matplotlib) (10.2.0)
+Requirement already satisfied: pyparsing&gt;=3 in /usr/lib/python3/dist-packages (from matplotlib) (3.1.1)
+Requirement already satisfied: psutil in /usr/local/lib/python3.12/dist-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (6.0.0)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (6.0.1)
+Requirement already satisfied: huggingface_hub&gt;=0.21.0 in /home/fli/.local/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (0.36.0)
+Requirement already satisfied: safetensors&gt;=0.4.3 in /home/fli/.local/lib/python3.12/site-packages (from accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (0.6.2)
+Requirement already satisfied: scipy&gt;=1.8.0 in /usr/lib/python3/dist-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (1.11.4)
+Requirement already satisfied: joblib&gt;=1.2.0 in /home/fli/.local/lib/python3.12/site-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (1.5.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/fli/.local/lib/python3.12/site-packages (from scikit-learn&lt;2,&gt;=1.6.0-&gt;chronos-forecasting&gt;=2.0) (3.6.0)
+Requirement already satisfied: filelock in /usr/lib/python3/dist-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.13.1)
+Requirement already satisfied: typing-extensions&gt;=4.10.0 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (4.15.0)
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (68.1.2)
+Requirement already satisfied: sympy&gt;=1.13.3 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.14.0)
+Requirement already satisfied: networkx in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.4.2)
+Requirement already satisfied: jinja2 in /usr/lib/python3/dist-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.1.2)
+Requirement already satisfied: fsspec in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in /usr/local/lib/python3.12/dist-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in /home/fli/.local/lib/python3.12/site-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.11.1.6)
+Requirement already satisfied: triton==3.3.0 in /usr/local/lib/python3.12/dist-packages (from torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (3.3.0)
+Requirement already satisfied: regex!=2019.12.17 in /usr/lib/python3/dist-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (2022.10.31)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (2.31.0)
+Requirement already satisfied: tokenizers&lt;=0.23.0,&gt;=0.22.0 in /home/fli/.local/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (0.22.1)
+Requirement already satisfied: tqdm&gt;=4.27 in /home/fli/.local/lib/python3.12/site-packages (from transformers&lt;5,&gt;=4.41-&gt;chronos-forecasting&gt;=2.0) (4.67.1)
+Requirement already satisfied: botocore&lt;1.41.0,&gt;=1.40.64 in /home/fli/.local/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (1.40.64)
+Requirement already satisfied: jmespath&lt;2.0.0,&gt;=0.7.1 in /home/fli/.local/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (1.0.1)
+Requirement already satisfied: s3transfer&lt;0.15.0,&gt;=0.14.0 in /home/fli/.local/lib/python3.12/site-packages (from boto3-&gt;chronos-forecasting&gt;=2.0) (0.14.0)
+Requirement already satisfied: urllib3!=2.2.0,&lt;3,&gt;=1.25.4 in /usr/lib/python3/dist-packages (from botocore&lt;1.41.0,&gt;=1.40.64-&gt;boto3-&gt;chronos-forecasting&gt;=2.0) (2.0.7)
+Requirement already satisfied: hf-xet&lt;2.0.0,&gt;=1.1.3 in /home/fli/.local/lib/python3.12/site-packages (from huggingface_hub&gt;=0.21.0-&gt;accelerate&lt;2,&gt;=0.34-&gt;chronos-forecasting&gt;=2.0) (1.2.0)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/fli/.local/lib/python3.12/site-packages (from sympy&gt;=1.13.3-&gt;torch&lt;3,&gt;=2.0-&gt;chronos-forecasting&gt;=2.0) (1.3.0)
+<span class="ansi-yellow-fg">WARNING: Skipping /usr/lib/python3.12/dist-packages/charset_normalizer-3.3.2.dist-info due to invalid metadata entry 'name'</span><span class="ansi-yellow-fg">
+</span>Note: you may need to restart the kernel to use updated packages.
 </pre>
 </div>
 </div>
@@ -7614,8 +7610,8 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chronos</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChronosPipeline</span><span class="p">,</span> <span class="n">Chronos2Pipeline</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">chronos</span> <span class="kn">import</span> <span class="n">BaseChronosPipeline</span><span class="p">,</span> <span class="n">Chronos2Pipeline</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="c1"># https://huggingface.co/amazon/chronos-2</span>
 <span class="n">LOCAL_MODEL_DIR</span> <span class="o">=</span> <span class="s2">"../data/chronos-2"</span> <span class="c1"># Your offline pretrained time series foundation model</span>
 <span class="n">pipeline</span><span class="p">:</span> <span class="n">Chronos2Pipeline</span> <span class="o">=</span> <span class="n">BaseChronosPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
@@ -7631,6 +7627,18 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2025-11-09 18:22:23.004478: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-11-09 18:22:23.042588: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-11-09 18:22:23.053590: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-11-09 18:22:23.080799: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-11-09 18:22:24.780436: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
@@ -7656,7 +7664,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load data as a long-format pandas data frame</span>
@@ -7672,7 +7680,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -7780,7 +7788,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Count number of unique time series and number of observations per item_id</span>
 <span class="n">n_unique_series</span> <span class="o">=</span> <span class="n">context_df</span><span class="p">[</span><span class="s1">'item_id'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -7803,6 +7811,14 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>/home/fli/.local/lib/python3.12/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
@@ -7831,14 +7847,6 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages/torch/utils/data/dataloader.py:668: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
-  warnings.warn(warn_msg)
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -7876,7 +7884,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>target</td>
 <td>624.867920</td>
 <td>611.385071</td>
-<td>638.598755</td>
+<td>638.598694</td>
 </tr>
 <tr>
 <th>1</th>
@@ -7892,7 +7900,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>H1</td>
 <td>1750-01-30 06:00:00</td>
 <td>target</td>
-<td>521.589966</td>
+<td>521.589905</td>
 <td>505.747437</td>
 <td>537.950806</td>
 </tr>
@@ -7902,7 +7910,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>1750-01-30 07:00:00</td>
 <td>target</td>
 <td>489.910706</td>
-<td>473.671875</td>
+<td>473.671814</td>
 <td>508.854126</td>
 </tr>
 <tr>
@@ -7911,8 +7919,8 @@ Note: you may need to restart the kernel to use updated packages.
 <td>1750-01-30 08:00:00</td>
 <td>target</td>
 <td>471.144501</td>
-<td>452.199432</td>
-<td>491.050385</td>
+<td>452.199371</td>
+<td>491.050354</td>
 </tr>
 <tr>
 <th>...</th>
@@ -7928,7 +7936,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>H414</td>
 <td>1750-02-10 19:00:00</td>
 <td>target</td>
-<td>61.697697</td>
+<td>61.697693</td>
 <td>49.787407</td>
 <td>75.447968</td>
 </tr>
@@ -7937,7 +7945,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>H414</td>
 <td>1750-02-10 20:00:00</td>
 <td>target</td>
-<td>52.210613</td>
+<td>52.210609</td>
 <td>41.923550</td>
 <td>65.115601</td>
 </tr>
@@ -7946,18 +7954,18 @@ Note: you may need to restart the kernel to use updated packages.
 <td>H414</td>
 <td>1750-02-10 21:00:00</td>
 <td>target</td>
-<td>46.259838</td>
-<td>36.681187</td>
-<td>55.795204</td>
+<td>46.259827</td>
+<td>36.681183</td>
+<td>55.795212</td>
 </tr>
 <tr>
 <th>9934</th>
 <td>H414</td>
 <td>1750-02-10 22:00:00</td>
 <td>target</td>
-<td>33.599995</td>
-<td>26.682121</td>
-<td>41.483685</td>
+<td>33.600002</td>
+<td>26.682114</td>
+<td>41.483673</td>
 </tr>
 <tr>
 <th>9935</th>
@@ -7965,8 +7973,8 @@ Note: you may need to restart the kernel to use updated packages.
 <td>1750-02-10 23:00:00</td>
 <td>target</td>
 <td>22.696373</td>
-<td>17.629692</td>
-<td>26.969658</td>
+<td>17.629684</td>
+<td>26.969643</td>
 </tr>
 </tbody>
 </table>
@@ -7995,9 +8003,9 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1"># Visualization helper function</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_forecast</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">plot_forecast</span><span class="p">(</span>
     <span class="n">context_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">pred_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">test_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
@@ -8061,6 +8069,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <span class="c1"># Load historical sales and past values of covariates</span>
 <span class="n">sales_context_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"../data/retail_sales_train.parquet"</span><span class="p">)</span>
+<span class="c1"># sales_context_df = pd.read_csv("../data/retail_sales_train.csv")</span>
 <span class="n">sales_context_df</span>
 </pre></div>
 </div>
@@ -8242,6 +8251,8 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load future values of covariates</span>
 <span class="n">sales_test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"../data/retail_sales_test.parquet"</span><span class="p">)</span>
+<span class="c1"># sales_test_df = pd.read_csv("../data/retail_sales_test.csv")</span>
+
 <span class="n">sales_future_df</span> <span class="o">=</span> <span class="n">sales_test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 <span class="n">sales_future_df</span>
 </pre></div>
@@ -8418,14 +8429,6 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages/torch/utils/data/dataloader.py:668: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
-  warnings.warn(warn_msg)
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -8452,7 +8455,6 @@ Note: you may need to restart the kernel to use updated packages.
 <th>target_name</th>
 <th>predictions</th>
 <th>0.1</th>
-<th>0.5</th>
 <th>0.9</th>
 </tr>
 </thead>
@@ -8463,8 +8465,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-05-03</td>
 <td>Sales</td>
 <td>28868.748047</td>
-<td>24831.212891</td>
-<td>28868.748047</td>
+<td>24831.210938</td>
 <td>32377.041016</td>
 </tr>
 <tr>
@@ -8473,8 +8474,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-05-10</td>
 <td>Sales</td>
 <td>23496.941406</td>
-<td>20528.726562</td>
-<td>23496.941406</td>
+<td>20528.724609</td>
 <td>28279.544922</td>
 </tr>
 <tr>
@@ -8484,7 +8484,6 @@ Note: you may need to restart the kernel to use updated packages.
 <td>Sales</td>
 <td>28338.820312</td>
 <td>23889.726562</td>
-<td>28338.820312</td>
 <td>32065.578125</td>
 </tr>
 <tr>
@@ -8492,9 +8491,8 @@ Note: you may need to restart the kernel to use updated packages.
 <td>1</td>
 <td>2015-05-24</td>
 <td>Sales</td>
-<td>24089.552734</td>
+<td>24089.554688</td>
 <td>20643.382812</td>
-<td>24089.552734</td>
 <td>29365.500000</td>
 </tr>
 <tr>
@@ -8504,12 +8502,10 @@ Note: you may need to restart the kernel to use updated packages.
 <td>Sales</td>
 <td>27662.677734</td>
 <td>22583.529297</td>
-<td>27662.677734</td>
 <td>31700.175781</td>
 </tr>
 <tr>
 <th>...</th>
-<td>...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -8523,9 +8519,8 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-06-28</td>
 <td>Sales</td>
 <td>53684.523438</td>
-<td>38193.707031</td>
-<td>53684.523438</td>
-<td>66396.882812</td>
+<td>38193.703125</td>
+<td>66396.875000</td>
 </tr>
 <tr>
 <th>14491</th>
@@ -8533,28 +8528,25 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-07-05</td>
 <td>Sales</td>
 <td>56915.792969</td>
-<td>38879.421875</td>
-<td>56915.792969</td>
-<td>66857.281250</td>
+<td>38879.414062</td>
+<td>66857.273438</td>
 </tr>
 <tr>
 <th>14492</th>
 <td>999</td>
 <td>2015-07-12</td>
 <td>Sales</td>
-<td>53435.718750</td>
-<td>37711.117188</td>
-<td>53435.718750</td>
-<td>66004.093750</td>
+<td>53435.722656</td>
+<td>37711.113281</td>
+<td>66004.101562</td>
 </tr>
 <tr>
 <th>14493</th>
 <td>999</td>
 <td>2015-07-19</td>
 <td>Sales</td>
-<td>56994.828125</td>
+<td>56994.824219</td>
 <td>38699.750000</td>
-<td>56994.828125</td>
 <td>66507.718750</td>
 </tr>
 <tr>
@@ -8564,12 +8556,11 @@ Note: you may need to restart the kernel to use updated packages.
 <td>Sales</td>
 <td>51786.867188</td>
 <td>37531.011719</td>
-<td>51786.867188</td>
 <td>65674.789062</td>
 </tr>
 </tbody>
 </table>
-<p>14495 rows × 7 columns</p>
+<p>14495 rows × 6 columns</p>
 </div>
 </div>
 </div>
@@ -8603,14 +8594,6 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/home/fli/.local/miniforge3/envs/python3.12-forecasting/lib/python3.12/site-packages/torch/utils/data/dataloader.py:668: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
-  warnings.warn(warn_msg)
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -8650,7 +8633,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>28939.392578</td>
 <td>25214.275391</td>
 <td>28939.392578</td>
-<td>32411.093750</td>
+<td>32411.097656</td>
 </tr>
 <tr>
 <th>1</th>
@@ -8660,17 +8643,17 @@ Note: you may need to restart the kernel to use updated packages.
 <td>25541.919922</td>
 <td>21921.328125</td>
 <td>25541.919922</td>
-<td>29191.931641</td>
+<td>29191.929688</td>
 </tr>
 <tr>
 <th>2</th>
 <td>1</td>
 <td>2015-05-17</td>
 <td>Sales</td>
-<td>23640.238281</td>
-<td>20500.337891</td>
-<td>23640.238281</td>
-<td>26884.664062</td>
+<td>23640.240234</td>
+<td>20500.343750</td>
+<td>23640.240234</td>
+<td>26884.666016</td>
 </tr>
 <tr>
 <th>3</th>
@@ -8678,7 +8661,7 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-05-24</td>
 <td>Sales</td>
 <td>26778.261719</td>
-<td>23318.355469</td>
+<td>23318.353516</td>
 <td>26778.261719</td>
 <td>30162.820312</td>
 </tr>
@@ -8688,9 +8671,9 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-05-31</td>
 <td>Sales</td>
 <td>22679.357422</td>
-<td>19722.279297</td>
+<td>19722.281250</td>
 <td>22679.357422</td>
-<td>25990.039062</td>
+<td>25990.042969</td>
 </tr>
 <tr>
 <th>...</th>
@@ -8707,10 +8690,10 @@ Note: you may need to restart the kernel to use updated packages.
 <td>999</td>
 <td>2015-06-28</td>
 <td>Sales</td>
-<td>40080.480469</td>
+<td>40080.484375</td>
 <td>34807.414062</td>
-<td>40080.480469</td>
-<td>47214.664062</td>
+<td>40080.484375</td>
+<td>47214.660156</td>
 </tr>
 <tr>
 <th>14491</th>
@@ -8718,9 +8701,9 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-07-05</td>
 <td>Sales</td>
 <td>68556.195312</td>
-<td>61109.792969</td>
+<td>61109.796875</td>
 <td>68556.195312</td>
-<td>75537.328125</td>
+<td>75537.335938</td>
 </tr>
 <tr>
 <th>14492</th>
@@ -8728,9 +8711,9 @@ Note: you may need to restart the kernel to use updated packages.
 <td>2015-07-12</td>
 <td>Sales</td>
 <td>40855.218750</td>
-<td>35225.351562</td>
+<td>35225.363281</td>
 <td>40855.218750</td>
-<td>48365.937500</td>
+<td>48365.933594</td>
 </tr>
 <tr>
 <th>14493</th>
@@ -8747,10 +8730,10 @@ Note: you may need to restart the kernel to use updated packages.
 <td>999</td>
 <td>2015-07-26</td>
 <td>Sales</td>
-<td>39742.550781</td>
+<td>39742.546875</td>
 <td>34394.359375</td>
-<td>39742.550781</td>
-<td>46101.929688</td>
+<td>39742.546875</td>
+<td>46101.925781</td>
 </tr>
 </tbody>
 </table>
@@ -8795,7 +8778,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/tmp/ipykernel_312479/29794273.py:44: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<pre>/tmp/ipykernel_1835729/29794273.py:44: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
   fig.show()
 </pre>
 </div>
@@ -8844,7 +8827,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/tmp/ipykernel_312479/29794273.py:44: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<pre>/tmp/ipykernel_1835729/29794273.py:44: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
   fig.show()
 </pre>
 </div>

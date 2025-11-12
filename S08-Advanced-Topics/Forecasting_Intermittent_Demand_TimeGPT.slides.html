@@ -7415,7 +7415,6 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
-                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7471,16 +7470,16 @@ main {
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 如需在本地/服务器首次运行，请取消下一行注释以安装依赖</span>
 <span class="c1"># !pip install --upgrade nixtla statsforecast utilsforecast pandas numpy matplotlib</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">nixtla</span><span class="w"> </span><span class="kn">import</span> <span class="n">NixtlaClient</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">utilsforecast.losses</span><span class="w"> </span><span class="kn">import</span> <span class="n">mae</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">utilsforecast.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">statsforecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatsForecast</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">statsforecast.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CrostonClassic</span><span class="p">,</span> <span class="n">CrostonOptimized</span><span class="p">,</span> <span class="n">IMAPA</span><span class="p">,</span> <span class="n">TSB</span>
+<span class="kn">from</span> <span class="nn">nixtla</span> <span class="kn">import</span> <span class="n">NixtlaClient</span>
+<span class="kn">from</span> <span class="nn">utilsforecast.losses</span> <span class="kn">import</span> <span class="n">mae</span>
+<span class="kn">from</span> <span class="nn">utilsforecast.evaluation</span> <span class="kn">import</span> <span class="n">evaluate</span>
+<span class="kn">from</span> <span class="nn">statsforecast</span> <span class="kn">import</span> <span class="n">StatsForecast</span>
+<span class="kn">from</span> <span class="nn">statsforecast.models</span> <span class="kn">import</span> <span class="n">CrostonClassic</span><span class="p">,</span> <span class="n">CrostonOptimized</span><span class="p">,</span> <span class="n">IMAPA</span><span class="p">,</span> <span class="n">TSB</span>
 </pre></div>
 </div>
 </div>

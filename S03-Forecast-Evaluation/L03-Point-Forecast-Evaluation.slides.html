@@ -5,7 +5,7 @@
 <meta content="chrome=1" http-equiv="X-UA-Compatible"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
-<title>01B-Linux-Basics slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
+<title>03.3-Point-Forecast-Evaluation slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
   import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
@@ -7415,6 +7415,7 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7434,182 +7435,34 @@ main {
 <main>
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=893b0097">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Linux-Basics">Linux Basics<a class="anchor-link" href="#Linux-Basics">¶</a></h1><h2 id="Feng-Li">Feng Li<a class="anchor-link" href="#Feng-Li">¶</a></h2><h3 id="Guanghua-School-of-Management">Guanghua School of Management<a class="anchor-link" href="#Guanghua-School-of-Management">¶</a></h3><h3 id="Peking-University">Peking University<a class="anchor-link" href="#Peking-University">¶</a></h3><h3 id="feng.li@gsm.pku.edu.cn"><a href="feng.li@gsm.pku.edu.cn">feng.li@gsm.pku.edu.cn</a><a class="anchor-link" href="#feng.li@gsm.pku.edu.cn">¶</a></h3><h3 id="Course-home-page:-https://feng.li/forecasting-with-ai">Course home page: <a href="https://feng.li/forecasting-with-ai">https://feng.li/forecasting-with-ai</a><a class="anchor-link" href="#Course-home-page:-https://feng.li/forecasting-with-ai">¶</a></h3>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Why-Linux?">Why Linux?<a class="anchor-link" href="#Why-Linux?">¶</a></h2><ul>
-<li><p>Linux is a free, open-source operating system.</p>
-</li>
-<li><p>All most all of distributed software are offered with Linux distributions.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="How-do-I-try-Linux-on-my-machine?">How do I try Linux on my machine?<a class="anchor-link" href="#How-do-I-try-Linux-on-my-machine?">¶</a></h2><ul>
-<li><p>Windows 10+ user:</p>
+<h1 id="%E2%9C%88%EF%B8%8F-Air-Passengers%EF%BC%9AAI-%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%BB%9A%E5%8A%A8%E8%AF%84%E4%BC%B0">✈️ Air Passengers：AI 预测与滚动评估<a class="anchor-link" href="#%E2%9C%88%EF%B8%8F-Air-Passengers%EF%BC%9AAI-%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%BB%9A%E5%8A%A8%E8%AF%84%E4%BC%B0">¶</a></h1><p><strong>目标</strong></p>
 <ul>
-<li>Enable the <a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux feature</a>.</li>
-<li>Install a Linux Distribution (Ubuntu or Debian) with <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Store</a>.</li>
-</ul>
-</li>
-<li><p>Mac user: Terminal commands are very similar to Linux commands.</p>
-</li>
-<li><p>Install a real Linux system like me.</p>
-</li>
+<li>使用 <code>air_passengers_with_id.csv</code>。</li>
+<li>统一用 <strong><code>from nixtla import NixtlaClient</code></strong> 做预测：比较 <code>seasonal_naive / theta / ets / auto_arima</code>。</li>
+<li>评估指标：<strong>ME / MAE / MSE / RMSE / MPE / MAPE / sMAPE</strong>。</li>
+<li><strong>Rolling Window</strong>：对 <strong>T+1 ~ T+5</strong> 的平均误差进行汇总对比。</li>
 </ul>
 </div>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c5101678">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="How-much-do-we-need-to-know-about-Linux?">How much do we need to know about Linux?<a class="anchor-link" href="#How-much-do-we-need-to-know-about-Linux?">¶</a></h2><ul>
-<li><p>Login to a Linux server</p>
-</li>
-<li><p>Navigation with basic Linux shell commands</p>
-</li>
-<li><p>File Manipulation and transformation</p>
-</li>
-<li><p>Use an editor within a Linux server</p>
-</li>
-</ul>
+<h4 id="%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96">导入与初始化<a class="anchor-link" href="#%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96">¶</a></h4>
 </div>
 </div>
 </div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Login-to-a-Linux-server">Login to a Linux server<a class="anchor-link" href="#Login-to-a-Linux-server">¶</a></h2><ul>
-<li><p>Windows users, you need <a href="https://aka.ms/terminal">Windows Terminal</a></p>
-</li>
-<li><p>Mac or Linux users, use the system Terminal to login to the server</p>
-<pre><code>ssh 2512345678@wm2-login.pku.edu.cn</code></pre>
-<p>where <code>2512345678</code> is your remote server's username, <code>wm2-login.pku.edu.cn</code> is your remote server's address.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Using-PKU-cluster">Using PKU cluster<a class="anchor-link" href="#Using-PKU-cluster">¶</a></h2><ul>
-<li><p>Apply for an account in the PKU HPC teaching cluster online</p>
-<p><a href="http://scow-jx2.pku.edu.cn/">http://scow-jx2.pku.edu.cn/</a></p>
-</li>
-<li><p>Login to the cluster</p>
-<ul>
-<li>Using the SCOW web interface at <a href="https://scow-jx2.pku.edu.cn/">https://scow-jx2.pku.edu.cn/</a></li>
-<li>Using SSH to login with OTP pass <a href="https://hpc.pku.edu.cn/ug/guide/access/">https://hpc.pku.edu.cn/ug/guide/access/</a></li>
-</ul>
-</li>
-<li><p>More information is available at <a href="https://hpc.pku.edu.cn/ug/guide/">https://hpc.pku.edu.cn/ug/guide/</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Run-a-remote-Jupyter-Notebook-or-using-the-SSH-tunnel">Run a remote Jupyter Notebook or using the SSH tunnel<a class="anchor-link" href="#Run-a-remote-Jupyter-Notebook-or-using-the-SSH-tunnel">¶</a></h2><ul>
-<li>Using the terminal to login to a remote server</li>
-</ul>
-<div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="m">2412345678</span>@wmjx2-login.pku.edu.cn
-</pre></div>
-<ul>
-<li><p>Start a Jupyter Application on the PKU server</p>
-<p><a href="https://scow-jx2.pku.edu.cn/apps/jx2/createApps">https://scow-jx2.pku.edu.cn/apps/jx2/createApps</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Navigation-with-basic-Linux-shell-commands">Navigation with basic Linux shell commands<a class="anchor-link" href="#Navigation-with-basic-Linux-shell-commands">¶</a></h2><ul>
-<li>Once you have logged into the server, a few things you could do with shell commands</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/fli
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=001a0ae2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7617,26 +7470,95 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>whoami
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 0) 导入与初始化</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nixtla</span><span class="w"> </span><span class="kn">import</span> <span class="n">NixtlaClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utilsforecast.losses</span><span class="w"> </span><span class="kn">import</span> <span class="n">mae</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">mape</span><span class="p">,</span> <span class="n">smape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utilsforecast.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+
+<span class="n">nixtla</span> <span class="o">=</span> <span class="n">NixtlaClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">'YOUR-API-KEY'</span><span class="p">)</span>  <span class="c1"># 初始化客户端</span>
+<span class="n">FREQ</span> <span class="o">=</span> <span class="s2">"MS"</span>  <span class="c1"># 月度</span>
+<span class="n">MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"timegpt-1"</span><span class="p">,</span> <span class="s2">"timegpt-1-long-horizon"</span><span class="p">]</span>            <span class="c1"># 模型</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div></div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac66ce8e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>fli
-</pre>
-</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE">读取数据<a class="anchor-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE">¶</a></h4>
 </div>
 </div>
 </div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d929a4d4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1) 读取数据</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/air_passengers_with_id.csv"</span><span class="p">)</span> <span class="c1">#输入你的真实地址</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">])</span> <span class="c1">#将ds列转换为日期时间格式</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"unique_id"</span><span class="p">,</span><span class="s2">"ds"</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#按unique_id和ds列排序，并重置索引</span>
+<span class="n">UID</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"unique_id"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5b8ae3ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87%E5%87%BD%E6%95%B0ME%E3%80%81MPE">定义指标函数ME、MPE<a class="anchor-link" href="#%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87%E5%87%BD%E6%95%B0ME%E3%80%81MPE">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6f3aa939">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 2) 指标函数：ME / MPE（%）</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">me</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> <span class="c1">#计算预测值与真实值的平均误差</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="nb">float</span><span class="p">);</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mpe</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> <span class="c1">#计算预测值与真实值的百分比误差</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="nb">float</span><span class="p">);</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">!=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">/</span> <span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1f216ed">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0">评估函数<a class="anchor-link" href="#%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7c9f86eb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7644,116 +7566,71 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">pwd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 3) 公共小工具</span>
+<span class="n">_METRICS</span> <span class="o">=</span> <span class="p">[</span><span class="n">mae</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">mape</span><span class="p">,</span> <span class="n">smape</span><span class="p">]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_eval_df</span><span class="p">(</span><span class="n">df_like</span><span class="p">):</span>
+    <span class="n">ev</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_like</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">_METRICS</span><span class="p">,</span> <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">"TimeGPT"</span><span class="p">],</span> 
+                  <span class="n">time_col</span><span class="o">=</span><span class="s2">"ds"</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"metric"</span><span class="p">)[</span><span class="s2">"TimeGPT"</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">yhat</span> <span class="o">=</span> <span class="n">df_like</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df_like</span><span class="p">[</span><span class="s2">"TimeGPT"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">;</span> <span class="k">return</span> <span class="n">ev</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yhat</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/fli/nextcloud/teaching/distributed-computing/distcomp-slides/L01-Introduction-to-Distributed-Computing
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div></div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5f316fe2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 4) 函数1：单模型的 Hold-out 指标</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">holdout_metrics</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">H_TEST</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+    <span class="c1"># 划分训练集和测试集</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="n">H_TEST</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">H_TEST</span><span class="p">:]</span>
+    <span class="c1"># 使用 Nixtla 模型进行预测，并与真实测试数据按日期合并</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">nixtla</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">H_TEST</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">FREQ</span><span class="p">,</span> 
+                             <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"unique_id"</span><span class="p">,</span><span class="s2">"ds"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+    <span class="c1"># 计算误差指标并提取真实值与预测值</span>
+    <span class="n">ev</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yhat</span> <span class="o">=</span> <span class="n">_eval_df</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span>
+    <span class="c1"># 汇总结果</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"model"</span><span class="p">:</span><span class="n">model_name</span><span class="p">,</span><span class="s2">"unique_id"</span><span class="p">:</span><span class="n">UID</span><span class="p">,</span><span class="s2">"ME"</span><span class="p">:</span><span class="n">me</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">),</span><span class="s2">"MPE"</span><span class="p">:</span><span class="n">mpe</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">),</span>
+            <span class="s2">"MAE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mae"</span><span class="p">],</span><span class="s2">"MSE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mse"</span><span class="p">],</span><span class="s2">"RMSE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"rmse"</span><span class="p">],</span><span class="s2">"MAPE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mape"</span><span class="p">],</span><span class="s2">"sMAPE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"smape"</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>figuresl
-google-first-computer.jpeg
-L01.1-Introduction-to-Distributed-Computing.ipynb
-L01.1-Introduction-to-Distributed-Computing.slides.html
-L01.2-Linux-Basics.ipynb
-L01.2-Linux-Basics.slides.html
-L01.3-Introduction-to-Hadoop.ipynb
-L01.3-Introduction-to-Hadoop.slides.html
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=44c6abcd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-htla
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 5) 函数2：单模型的 Rolling(T+1..T+5) 平均指标</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rolling_metrics</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_windows</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># 生成多次滚动窗口预测结果，并按时间排序</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">nixtla</span><span class="o">.</span><span class="n">cross_validation</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="n">n_windows</span><span class="o">=</span><span class="n">n_windows</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">FREQ</span><span class="p">,</span> 
+                                 <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"unique_id"</span><span class="p">,</span><span class="s2">"cutoff"</span><span class="p">,</span><span class="s2">"ds"</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># 给每个窗口的预测样本标上步长 h（第几步预测）</span>
+    <span class="n">cv</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"unique_id"</span><span class="p">,</span><span class="s2">"cutoff"</span><span class="p">])</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># 循环计算每个预测步长（T+1..T+H）的平均误差</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">H</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">cv</span><span class="p">[</span><span class="n">cv</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span><span class="o">==</span><span class="n">h</span><span class="p">][[</span><span class="s2">"unique_id"</span><span class="p">,</span><span class="s2">"ds"</span><span class="p">,</span><span class="s2">"y"</span><span class="p">,</span><span class="s2">"TimeGPT"</span><span class="p">]];</span> <span class="n">ev</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yhat</span> <span class="o">=</span> <span class="n">_eval_df</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+        <span class="c1"># 记录该步长下的各类指标</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"model"</span><span class="p">:</span><span class="n">model_name</span><span class="p">,</span><span class="s2">"unique_id"</span><span class="p">:</span><span class="n">UID</span><span class="p">,</span><span class="s2">"horizon"</span><span class="p">:</span><span class="n">h</span><span class="p">,</span><span class="s2">"ME"</span><span class="p">:</span><span class="n">me</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">),</span><span class="s2">"MPE"</span><span class="p">:</span><span class="n">mpe</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">),</span>
+                     <span class="s2">"MAE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mae"</span><span class="p">],</span><span class="s2">"MSE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mse"</span><span class="p">],</span><span class="s2">"RMSE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"rmse"</span><span class="p">],</span><span class="s2">"MAPE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"mape"</span><span class="p">],</span><span class="s2">"sMAPE"</span><span class="p">:</span><span class="n">ev</span><span class="p">[</span><span class="s2">"smape"</span><span class="p">]})</span>
+    <span class="c1"># 汇总所有步长的指标表并返回</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"horizon"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 3.6M
-drwxr-xr-x  4 fli fli 4.0K Feb 20 18:42 .
--rw-r--r--  1 fli fli  15K Feb 20 18:42 L01.2-Linux-Basics.ipynb
-drwxr-xr-x  2 fli fli 4.0K Feb 20 17:36 .ipynb_checkpoints
-drwxr-xr-x 17 fli fli 4.0K Feb 20 17:32 ..
--rw-r--r--  1 fli fli  28K Nov 21 12:46 L01.3-Introduction-to-Hadoop.ipynb
--rw-r--r--  1 fli fli 586K Nov 21 11:04 L01.3-Introduction-to-Hadoop.slides.html
--rw-r--r--  1 fli fli 815K Nov 21 11:04 L01.2-Linux-Basics.slides.html
--rw-r--r--  1 fli fli 560K Nov 21 11:04 L01.1-Introduction-to-Distributed-Computing.slides.html
--rw-r--r--  1 fli fli 1.7M Sep 30 22:50 google-first-computer.jpeg
--rw-r--r--  1 fli fli 7.3K Mar  3  2020 L01.1-Introduction-to-Distributed-Computing.ipynb
-drwxr-xr-x  2 fli fli 4.0K Feb 15  2020 figures
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e437b7fa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7761,82 +7638,32 @@ drwxr-xr-x  2 fli fli 4.0K Feb 15  2020 figures
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/passwd
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 6) 函数3：对比两种 TimeGPT 模型</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_models</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_list</span><span class="o">=</span><span class="n">MODELS</span><span class="p">,</span> <span class="n">H_TEST</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_windows</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># Hold-out</span>
+    <span class="n">hold_rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">holdout_metrics</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">H_TEST</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model_list</span><span class="p">]</span>
+    <span class="n">holdout_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hold_rows</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"MAE"</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># Rolling</span>
+    <span class="n">roll_dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">rolling_metrics</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">n_windows</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model_list</span><span class="p">]</span>
+    <span class="n">rolling_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">roll_dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">holdout_df</span><span class="p">,</span> <span class="n">rolling_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>root:x:0:0:root:/root:/bin/zsh
-daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-bin:x:2:2:bin:/bin:/usr/sbin/nologin
-sys:x:3:3:sys:/dev:/usr/sbin/nologin
-sync:x:4:65534:sync:/bin:/bin/sync
-games:x:5:60:games:/usr/games:/usr/sbin/nologin
-man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
-lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
-mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
-news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
-uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
-proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
-www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
-backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
-list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
-irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
-gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
-nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
-_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
-systemd-timesync:x:101:102:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
-systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
-systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
-messagebus:x:105:110::/nonexistent:/usr/sbin/nologin
-tss:x:106:111:TPM2 software stack,,,:/var/lib/tpm:/bin/false
-avahi-autoipd:x:107:114:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/usr/sbin/nologin
-usbmux:x:108:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
-rtkit:x:109:115:RealtimeKit,,,:/proc:/usr/sbin/nologin
-sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
-pulse:x:111:119:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
-avahi:x:113:121:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
-saned:x:114:122::/var/lib/saned:/usr/sbin/nologin
-colord:x:115:123:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
-geoclue:x:116:124::/var/lib/geoclue:/usr/sbin/nologin
-hplip:x:117:7:HPLIP system user,,,:/var/run/hplip:/bin/false
-fli:x:1000:1000:Feng Li,,,:/home/fli:/bin/zsh
-systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
-Debian-exim:x:119:126::/var/spool/exim4:/usr/sbin/nologin
-Debian-gdm:x:118:125:Gnome Display Manager:/var/lib/gdm3:/bin/false
-nm-openconnect:x:104:129:NetworkManager OpenConnect plugin,,,:/var/lib/NetworkManager:/usr/sbin/nologin
-uuidd:x:121:130::/run/uuidd:/usr/sbin/nologin
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5f74c7c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="File-Manipulation">File Manipulation<a class="anchor-link" href="#File-Manipulation">¶</a></h2>
+<h4 id="%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C">对比结果<a class="anchor-link" href="#%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C">¶</a></h4>
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7c4fe815">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7844,7 +7671,10 @@ uuidd:x:121:130::/run/uuidd:/usr/sbin/nologin
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>touch<span class="w"> </span>lifeng.txt<span class="w"> </span><span class="c1"># create a file</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 7) 得到 Hold-out 与 Rolling 的对比结果</span>
+<span class="n">holdout_cmp</span><span class="p">,</span> <span class="n">rolling_cmp</span> <span class="o">=</span> <span class="n">compare_models</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">MODELS</span><span class="p">,</span> <span class="n">H_TEST</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_windows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">holdout_cmp</span><span class="p">)</span>   <span class="c1"># 各模型在最后12期的总体指标</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rolling_cmp</span><span class="p">)</span>   <span class="c1"># 各模型在 h=1..5 的平均指标</span>
 </pre></div>
 </div>
 </div>
@@ -7856,19 +7686,262 @@ uuidd:x:121:130::/run/uuidd:/usr/sbin/nologin
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>INFO:nixtla.nixtla_client:Validating inputs...
+INFO:nixtla.nixtla_client:Preprocessing dataframes...
+INFO:nixtla.nixtla_client:Querying model metadata...
+INFO:nixtla.nixtla_client:Restricting input...
+INFO:nixtla.nixtla_client:Calling Forecast Endpoint...
+INFO:nixtla.nixtla_client:Validating inputs...
+INFO:nixtla.nixtla_client:Preprocessing dataframes...
+INFO:nixtla.nixtla_client:Querying model metadata...
+INFO:nixtla.nixtla_client:Restricting input...
+INFO:nixtla.nixtla_client:Calling Forecast Endpoint...
+INFO:nixtla.nixtla_client:Validating inputs...
+INFO:nixtla.nixtla_client:Preprocessing dataframes...
+INFO:nixtla.nixtla_client:Restricting input...
+INFO:nixtla.nixtla_client:Calling Cross Validation Endpoint...
+INFO:nixtla.nixtla_client:Validating inputs...
+INFO:nixtla.nixtla_client:Preprocessing dataframes...
+INFO:nixtla.nixtla_client:Restricting input...
+INFO:nixtla.nixtla_client:Calling Cross Validation Endpoint...
+</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>model</th>
+<th>unique_id</th>
+<th>ME</th>
+<th>MPE</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>RMSE</th>
+<th>MAPE</th>
+<th>sMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>3.015</td>
+<td>0.518</td>
+<td>11.062</td>
+<td>199.132</td>
+<td>14.111</td>
+<td>0.023</td>
+<td>0.012</td>
+</tr>
+<tr>
+<th>0</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>4.803</td>
+<td>0.790</td>
+<td>12.679</td>
+<td>213.936</td>
+<td>14.627</td>
+<td>0.027</td>
+<td>0.014</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>model</th>
+<th>unique_id</th>
+<th>horizon</th>
+<th>ME</th>
+<th>MPE</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>RMSE</th>
+<th>MAPE</th>
+<th>sMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>1</td>
+<td>-6.199</td>
+<td>-1.627</td>
+<td>10.340</td>
+<td>152.831</td>
+<td>12.362</td>
+<td>0.026</td>
+<td>0.013</td>
+</tr>
+<tr>
+<th>1</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>2</td>
+<td>0.795</td>
+<td>-0.072</td>
+<td>13.483</td>
+<td>241.000</td>
+<td>15.524</td>
+<td>0.033</td>
+<td>0.016</td>
+</tr>
+<tr>
+<th>2</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>3</td>
+<td>-0.001</td>
+<td>-0.450</td>
+<td>13.507</td>
+<td>218.250</td>
+<td>14.773</td>
+<td>0.036</td>
+<td>0.018</td>
+</tr>
+<tr>
+<th>3</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>4</td>
+<td>4.745</td>
+<td>0.480</td>
+<td>20.547</td>
+<td>512.559</td>
+<td>22.640</td>
+<td>0.050</td>
+<td>0.025</td>
+</tr>
+<tr>
+<th>4</th>
+<td>timegpt-1</td>
+<td>D1</td>
+<td>5</td>
+<td>7.133</td>
+<td>1.199</td>
+<td>17.200</td>
+<td>411.193</td>
+<td>20.278</td>
+<td>0.041</td>
+<td>0.020</td>
+</tr>
+<tr>
+<th>5</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>1</td>
+<td>-3.530</td>
+<td>-0.910</td>
+<td>14.061</td>
+<td>236.974</td>
+<td>15.394</td>
+<td>0.035</td>
+<td>0.017</td>
+</tr>
+<tr>
+<th>6</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>2</td>
+<td>3.830</td>
+<td>0.793</td>
+<td>14.638</td>
+<td>311.755</td>
+<td>17.657</td>
+<td>0.036</td>
+<td>0.018</td>
+</tr>
+<tr>
+<th>7</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>3</td>
+<td>2.965</td>
+<td>0.337</td>
+<td>16.404</td>
+<td>363.039</td>
+<td>19.054</td>
+<td>0.043</td>
+<td>0.022</td>
+</tr>
+<tr>
+<th>8</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>4</td>
+<td>6.510</td>
+<td>0.997</td>
+<td>23.530</td>
+<td>698.041</td>
+<td>26.420</td>
+<td>0.059</td>
+<td>0.030</td>
+</tr>
+<tr>
+<th>9</th>
+<td>timegpt-1-long-horizon</td>
+<td>D1</td>
+<td>5</td>
+<td>9.945</td>
+<td>1.997</td>
+<td>19.138</td>
+<td>555.677</td>
+<td>23.573</td>
+<td>0.044</td>
+<td>0.023</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div>
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=06245157">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7876,7 +7949,16 @@ uuidd:x:121:130::/run/uuidd:/usr/sbin/nologin
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-htla<span class="w"> </span>lifeng.txt
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 按模型分组取平均</span>
+<span class="n">rolling_avg</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">rolling_cmp</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)[[</span><span class="s2">"ME"</span><span class="p">,</span><span class="s2">"MAE"</span><span class="p">,</span><span class="s2">"MSE"</span><span class="p">,</span><span class="s2">"RMSE"</span><span class="p">,</span><span class="s2">"MPE"</span><span class="p">,</span><span class="s2">"MAPE"</span><span class="p">,</span><span class="s2">"sMAPE"</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"📈 Rolling Window 平均误差（T+1 ~ T+5）"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rolling_avg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7889,1046 +7971,68 @@ uuidd:x:121:130::/run/uuidd:/usr/sbin/nologin
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>-rw-r--r-- 1 fli fli 0 Feb 20 18:44 lifeng.txt
+<pre>📈 Rolling Window 平均误差（T+1 ~ T+5）
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>model</th>
+<th>ME</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>RMSE</th>
+<th>MPE</th>
+<th>MAPE</th>
+<th>sMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>timegpt-1</td>
+<td>1.295</td>
+<td>15.015</td>
+<td>307.167</td>
+<td>17.115</td>
+<td>-0.094</td>
+<td>0.037</td>
+<td>0.018</td>
+</tr>
+<tr>
+<th>1</th>
+<td>timegpt-1-long-horizon</td>
+<td>3.944</td>
+<td>17.554</td>
+<td>433.097</td>
+<td>20.420</td>
+<td>0.643</td>
+<td>0.043</td>
+<td>0.022</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>mkdir<span class="w"> </span>hello_linux
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-htla<span class="w"> </span>.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 3.6M
-drwxr-xr-x  5 fli fli 4.0K Feb 20 18:44 .
-drwxr-xr-x  2 fli fli 4.0K Feb 20 18:44 hello_linux
--rw-r--r--  1 fli fli    0 Feb 20 18:44 lifeng.txt
--rw-r--r--  1 fli fli  15K Feb 20 18:42 L01.2-Linux-Basics.ipynb
-drwxr-xr-x  2 fli fli 4.0K Feb 20 17:36 .ipynb_checkpoints
-drwxr-xr-x 17 fli fli 4.0K Feb 20 17:32 ..
--rw-r--r--  1 fli fli  28K Nov 21 12:46 L01.3-Introduction-to-Hadoop.ipynb
--rw-r--r--  1 fli fli 586K Nov 21 11:04 L01.3-Introduction-to-Hadoop.slides.html
--rw-r--r--  1 fli fli 815K Nov 21 11:04 L01.2-Linux-Basics.slides.html
--rw-r--r--  1 fli fli 560K Nov 21 11:04 L01.1-Introduction-to-Distributed-Computing.slides.html
--rw-r--r--  1 fli fli 1.7M Sep 30 22:50 google-first-computer.jpeg
--rw-r--r--  1 fli fli 7.3K Mar  3  2020 L01.1-Introduction-to-Distributed-Computing.ipynb
-drwxr-xr-x  2 fli fli 4.0K Feb 15  2020 figures
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>hello_linux<span class="w"> </span><span class="c1"># change directory to hello_linux</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/fli/nextcloud/teaching/distributed-computing/distcomp-slides/L01-Introduction-to-Distributed-Computing/hello_linux
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>touch<span class="w"> </span>hello.py
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>hello.py
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>rm<span class="w"> </span>hello.py
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="c1"># swtich to parent directory</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/fli/nextcloud/teaching/distributed-computing/distcomp-slides/L01-Introduction-to-Distributed-Computing
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>figuresl
-google-first-computer.jpeg
-hello_linux
-L01.1-Introduction-to-Distributed-Computing.ipynb
-L01.1-Introduction-to-Distributed-Computing.slides.html
-L01.2-Linux-Basics.ipynb
-L01.2-Linux-Basics.slides.html
-L01.3-Introduction-to-Hadoop.ipynb
-L01.3-Introduction-to-Hadoop.slides.html
-lifeng.txt
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>L1-Introduction
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>bash: cd: L1-Introduction: No such file or directory
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/fli/nextcloud/teaching/distributed-computing/distcomp-slides/L01-Introduction-to-Distributed-Computing
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>mv<span class="w"> </span>hello_linux<span class="w"> </span>goodbye_linux
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>figuresl
-goodbye_linux
-google-first-computer.jpeg
-L01.1-Introduction-to-Distributed-Computing.ipynb
-L01.1-Introduction-to-Distributed-Computing.slides.html
-L01.2-Linux-Basics.ipynb
-L01.2-Linux-Basics.slides.html
-L01.3-Introduction-to-Hadoop.ipynb
-L01.3-Introduction-to-Hadoop.slides.html
-lifeng.txt
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>goodbye_linux
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>figuresl
-google-first-computer.jpeg
-L01.1-Introduction-to-Distributed-Computing.ipynb
-L01.1-Introduction-to-Distributed-Computing.slides.html
-L01.2-Linux-Basics.ipynb
-L01.2-Linux-Basics.slides.html
-L01.3-Introduction-to-Hadoop.ipynb
-L01.3-Introduction-to-Hadoop.slides.html
-lifeng.txt
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Use-an-editor-within-a-Linux-server">Use an editor within a Linux server<a class="anchor-link" href="#Use-an-editor-within-a-Linux-server">¶</a></h2><ul>
-<li><code>nano</code>  : simple to use</li>
-<li><code>vim</code>   : take a little time to learn</li>
-<li><code>emacs</code> : steady learning curve</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Need-help-of-a-command?">Need help of a command?<a class="anchor-link" href="#Need-help-of-a-command?">¶</a></h2><ul>
-<li><p>We take <code>mkdir</code> as an example</p>
-<ul>
-<li><p><code>man mkdir</code> shows the standard manual of Linux command</p>
-</li>
-<li><p><code>mkdir --help</code> prints short help for the command</p>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Linux-Pipelines">Linux Pipelines<a class="anchor-link" href="#Linux-Pipelines">¶</a></h2><ul>
-<li><code>cat</code> – Concatenate files</li>
-<li><code>sort</code> – Sort lines of text</li>
-<li><code>uniq</code> – Report or omit repeated lines</li>
-<li><code>grep</code> – Print lines matching a pattern</li>
-<li><code>wc</code> – Print newline, word, and byte counts for each file</li>
-<li><code>head</code> – Output the first part of a file</li>
-<li><code>tail</code> – Output the last part of a file</li>
-<li><code>tee</code> – Read from standard input and write to standard output and files</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Standard-Input,-Output,-and-Error">Standard Input, Output, and Error<a class="anchor-link" href="#Standard-Input,-Output,-and-Error">¶</a></h2><ul>
-<li><p>Linux theme: "everything is a file."</p>
-</li>
-<li><p>The output of a shell program often consists of two types:</p>
-<ul>
-<li>The program's results, that is, the data the program is designed to produce.</li>
-<li>Status and error messages that tell us how the program is getting along.</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li><p>Programs such as <code>ls</code> actually send their results to</p>
-<ul>
-<li><p>a special file called <strong>standard output</strong> (often expressed as <code>stdout</code>) and</p>
-</li>
-<li><p>their status messages to another file called <strong>standard error</strong> (<code>stderr</code>).</p>
-</li>
-<li><p>By default, both standard output and standard error are linked to the screen and not saved into a disk file.</p>
-</li>
-</ul>
-</li>
-<li><p>Many programs take input from a facility called standard input (stdin), which is, by default, attached to the keyboard.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Redirecting-Standard-Output-and-Errors">Redirecting Standard Output and Errors<a class="anchor-link" href="#Redirecting-Standard-Output-and-Errors">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/usr/bin<span class="w"> </span>&gt;<span class="w"> </span>ls-output.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>ls-output.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>-rw-r--r-- 1 fli fli 154955 Feb 20 18:44 ls-output.txt
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>head<span class="w"> </span>ls-output.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 422588
--rwxr-xr-x 1 root root       60224 Oct 24 03:29 [
--rwxr-xr-x 1 root root          96 Jan 27 10:05 2to3-2.7
--rwxr-xr-x 1 root root          39 Aug 15  2020 7z
--rwxr-xr-x 1 root root          40 Aug 15  2020 7za
--rwxr-xr-x 1 root root          40 Aug 15  2020 7zr
-lrwxrwxrwx 1 root root          52 Feb  5 06:04 a2ping -&gt; ../share/texlive/texmf-dist/scripts/a2ping/a2ping.pl
--rwxr-xr-x 1 root root          39 Dec 21 23:28 a2x
-lrwxrwxrwx 1 root root          54 Feb  5 06:04 a5toa4 -&gt; ../share/texlive/texmf-dist/scripts/pfarrei/a5toa4.tlu
-lrwxrwxrwx 1 root root          25 Sep 22  2019 aclocal -&gt; /etc/alternatives/aclocal
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Append-redirected-output-to-a-file">Append redirected output to a file<a class="anchor-link" href="#Append-redirected-output-to-a-file">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/usr/bin<span class="w"> </span>&gt;&gt;<span class="w"> </span>ls-output.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Redirecting-Standard-Error">Redirecting Standard Error<a class="anchor-link" href="#Redirecting-Standard-Error">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/bin/usr<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>ls-error.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Redirecting-Standard-Input">Redirecting Standard Input<a class="anchor-link" href="#Redirecting-Standard-Input">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>head<span class="w"> </span>ls-output.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 422588
--rwxr-xr-x 1 root root       60224 Oct 24 03:29 [
--rwxr-xr-x 1 root root          96 Jan 27 10:05 2to3-2.7
--rwxr-xr-x 1 root root          39 Aug 15  2020 7z
--rwxr-xr-x 1 root root          40 Aug 15  2020 7za
--rwxr-xr-x 1 root root          40 Aug 15  2020 7zr
-lrwxrwxrwx 1 root root          52 Feb  5 06:04 a2ping -&gt; ../share/texlive/texmf-dist/scripts/a2ping/a2ping.pl
--rwxr-xr-x 1 root root          39 Dec 21 23:28 a2x
-lrwxrwxrwx 1 root root          54 Feb  5 06:04 a5toa4 -&gt; ../share/texlive/texmf-dist/scripts/pfarrei/a5toa4.tlu
-lrwxrwxrwx 1 root root          25 Sep 22  2019 aclocal -&gt; /etc/alternatives/aclocal
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>ls-output.txt<span class="w"> </span>ls-error.txt<span class="w"> </span>&gt;<span class="w"> </span>ls_all.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-htla<span class="w"> </span>ls_all.txt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Pipelines">Pipelines<a class="anchor-link" href="#Pipelines">¶</a></h2><p>Read data from standard input and send to standard output is utilized by a shell feature called pipelines with the format</p>
-<pre><code>command1 | command2 </code></pre>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/usr/bin<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>   2328   22201  154955
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>/bin<span class="w"> </span>/usr/bin<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-[
-[
-2to3-2.7
-2to3-2.7
-7z
-7z
-7za
-7za
-7zr
-sort: write failed: 'standard output': Broken pipe
-sort: write error
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Upload-and-download-data">Upload and download data<a class="anchor-link" href="#Upload-and-download-data">¶</a></h2><ul>
-<li><p>The simplest way is to use a graphical tool such as <a href="https://filezilla-project.org/download.php?type=client">FileZilla</a>.</p>
-</li>
-<li><p>When you are more comfortable with commandline tools, you could try <code>scp</code> or <code>rsync</code></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
